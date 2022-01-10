@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const About = () => (
+const About = () => (
   <>
     <main>
       <h2>Who are we?</h2>
@@ -11,3 +11,5 @@ export const About = () => (
     </nav>
   </>
 );
+
+export default About;
