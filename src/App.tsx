@@ -6,7 +6,8 @@ import "./App.css";
 import { PageLayout } from "./components/PageLayout";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 
-const Home = lazy(() => import("./pages/Home"));
+import Home from "./pages/Home";
+
 const About = lazy(() => import("./pages/About"));
 
 const Navigation = () => (

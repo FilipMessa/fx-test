@@ -1,15 +1,33 @@
 import { Link } from "react-router-dom";
-import { Row } from "antd";
+import { Result } from "antd";
 
-import { CurrencyList } from "../components/CurrencyList";
+import { useFetchForeignExchange } from "../hooks/useFetchForeignExchange";
 
-const Home = () => (
-  <main>
-    <CurrencyList />
-    <nav>
-      <Link to="/about">About</Link>
-    </nav>
-  </main>
-);
+import { ForeignExchangeList } from "../components/ForeignExchangeList";
+
+const Home = () => {
+  const { data, isLoading, hasError } = useFetchForeignExchange();
+
+  return (
+    <main>
+      {hasError ? (
+        <Result
+          status="error"
+          title="Sorry something went wrong. Please try again later."
+        />
+      ) : (
+        <ForeignExchangeList
+          isLoading={isLoading}
+          fx={data?.fx}
+          baseCurrency={data?.baseCurrency}
+        />
+      )}
+
+      <nav>
+        <Link to="/about">About</Link>
+      </nav>
+    </main>
+  );
+};
 
 export default Home;

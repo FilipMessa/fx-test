@@ -1,16 +1,34 @@
 import { Table, Space } from "antd";
+import { useMemo } from "react";
 import ReactCountryFlag from "react-country-flag";
+import { Fx } from "../hooks/useFetchForeignExchange";
 
-// TODO baseCurrency from API
-export const CurrencyList = ({ baseCurrency = "EUR" }: any) => {
-  const formatter = new Intl.NumberFormat(undefined, {
-    style: "currency",
-    currency: baseCurrency,
-  });
+type Props = {
+  baseCurrency?: string;
+  fx?: Fx[];
+  isLoading: boolean;
+};
+
+export const ForeignExchangeList = ({
+  baseCurrency = "USD",
+  fx,
+  isLoading = false,
+}: Props) => {
+  const formatter = useMemo(
+    () =>
+      new Intl.NumberFormat(undefined, {
+        style: "currency",
+        currency: baseCurrency,
+      }),
+    [baseCurrency]
+  );
+
   return (
     <Table
-      dataSource={mockDate}
+      loading={isLoading}
+      dataSource={mockData}
       pagination={false}
+      showHeader
       rowKey={(record) => record.country.countryCode}
     >
       <Table.Column
@@ -38,7 +56,7 @@ export const CurrencyList = ({ baseCurrency = "EUR" }: any) => {
   );
 };
 
-const mockDate = [
+const mockData = [
   {
     country: { countryCode: "EU", countryName: "European union" },
     currency: "EUR",
