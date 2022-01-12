@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Layout, Typography, Image, Row, Col } from "antd";
+import { Layout, Typography, Image, Row, Col, Space } from "antd";
 
 import logo from "../assets/logo.png";
 import { SearchBar } from "./SearchBar";
@@ -16,9 +16,16 @@ export const PageLayout = ({ children }: Props) => {
       <Header>
         <Row align="middle" style={{ height: "100%" }}>
           <Col xs={0} sm={1}>
-            <Row align="middle">
-              <Image height="43px" preview={false} src={logo} alt="logo" />
-            </Row>
+            <Image
+              style={{
+                display: "inline-block",
+                verticalAlign: "middle",
+                maxHeight: "43px",
+              }}
+              preview={false}
+              src={logo}
+              alt="logo"
+            />
           </Col>
           <Col flex={11}>
             <Typography.Title style={{ margin: "0 8px", color: "#fff" }}>
@@ -30,10 +37,14 @@ export const PageLayout = ({ children }: Props) => {
 
       {/* TODO(dev): remove height  */}
       <Content style={{ padding: "10px 50px", height: 12000 }}>
-        <Row>
-          <SearchBar />
-        </Row>
-        {children}
+        <Space direction="vertical" style={{ width: "100%" }}>
+          <SearchBar
+            onSearch={() => {
+              // TODO
+            }}
+          />
+          {children}
+        </Space>
       </Content>
     </Layout>
   );

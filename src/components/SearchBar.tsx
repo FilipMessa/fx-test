@@ -1,6 +1,10 @@
 import { Affix, Input } from "antd";
 
-export const SearchBar = () => (
+type Props = {
+  onSearch: (value: string) => void;
+};
+
+export const SearchBar = ({ onSearch }: Props) => (
   <Affix offsetTop={10}>
     {/* 
       FIXME(workaround):
@@ -13,7 +17,7 @@ export const SearchBar = () => (
       <Input.Search
         placeholder="input search text"
         allowClear
-        onSearch={() => null}
+        onSearch={onSearch}
         style={{ width: 200 }}
       />
     </div>
