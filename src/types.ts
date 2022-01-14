@@ -1,23 +1,32 @@
-import { useFetch } from "./useFetch";
-import { api } from "../consts";
+export type Currency = {
+  code: string;
+  name: string;
+  symbol: string;
+};
 
-interface ExchangeRate {
+export type Country = {
+  currencies: Currency[];
+  name: string;
+  alpha2Code: string;
+};
+
+type ExchangeRate = {
   buy: number;
   middle: number;
   sell: number;
   indicator: number;
   lastModified: Date;
-}
+};
 
-interface BanknoteRate {
+type BanknoteRate = {
   buy: number;
   middle: number;
   sell: number;
   indicator: number;
   lastModified: Date;
-}
+};
 
-export interface Fx {
+export type Fx = {
   currency: string;
   precision: number;
   nameI18N: string;
@@ -25,16 +34,22 @@ export interface Fx {
   banknoteRate: BanknoteRate;
   flags: string[];
   denominations: number[];
-}
+};
 
-export interface Data {
+export type ExchangeRates = {
   institute: number;
   lastUpdated: Date;
   comparisonDate: Date;
   baseCurrency: string;
   fx: Fx[];
-}
+};
 
-export function useFetchForeignExchange() {
-  return useFetch<Data>({ url: api.foreignExchange });
-}
+export type CurrencyExchangeRate = {
+  country: {
+    name: string;
+    countryCode: string;
+  };
+  currency: string;
+  sell: number;
+  buy: number;
+};

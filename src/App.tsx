@@ -1,10 +1,12 @@
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { Spin } from "antd";
-import "./App.css";
 
+import { ExchangeRateContextProvider } from "./components/ExchangeRateContext";
 import { PageLayout } from "./components/PageLayout";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import { NAV_LINKS } from "./consts";
 
 import Home from "./pages/Home";
 
@@ -12,8 +14,15 @@ const About = lazy(() => import("./pages/About"));
 
 const Navigation = () => (
   <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="about" element={<About />} />
+    <Route
+      path={NAV_LINKS.home}
+      element={
+        <ExchangeRateContextProvider>
+          <Home />
+        </ExchangeRateContextProvider>
+      }
+    />
+    <Route path={NAV_LINKS.about} element={<About />} />
   </Routes>
 );
 
