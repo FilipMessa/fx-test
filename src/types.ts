@@ -28,12 +28,12 @@ type BanknoteRate = {
 
 export type Fx = {
   currency: string;
-  precision: number;
-  nameI18N: string;
+  precision?: number;
+  nameI18N?: string;
   exchangeRate: ExchangeRate;
-  banknoteRate: BanknoteRate;
-  flags: string[];
-  denominations: number[];
+  banknoteRate?: BanknoteRate;
+  flags?: string[];
+  denominations?: number[];
 };
 
 export type ExchangeRates = {
