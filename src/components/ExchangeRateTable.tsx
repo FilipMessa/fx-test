@@ -15,8 +15,9 @@ export const ExchangeRateTable = ({
   isLoading = false,
 }: Props) => {
   return (
-    <Badge.Ribbon text={baseCurrency}>
+    <Badge.Ribbon data-cy="base-currency" text={baseCurrency}>
       <Table
+        data-cy="exchange-rate-table"
         dataSource={exchangeRates || []}
         pagination={false}
         loading={isLoading}

@@ -24,6 +24,7 @@ export const SearchBar = ({ onSearch, searchTerm, isDisabled }: Props) => {
      */}
       <div>
         <Input.Search
+          data-cy="searchbar"
           disabled={isDisabled}
           defaultValue={searchTerm || ""}
           placeholder="input search text"

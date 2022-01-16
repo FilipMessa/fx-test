@@ -14,7 +14,7 @@ type Props = {
 export const PageLayout = ({ children }: Props) => {
   return (
     <Layout>
-      <Header>
+      <Header data-cy="page-header">
         <Row align="middle" style={{ height: "100%" }}>
           <Col xs={0} sm={1}>
             <GeorgeLogo />
