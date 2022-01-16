@@ -42,10 +42,14 @@ export const ExchangeRateContextProvider = ({
       fx.currency !== data?.exchangeRates?.baseCurrency;
 
     const fx = data?.exchangeRates?.fx.filter(filterOutBaseCurrencyRate);
+
     const currenciesOfCountries = mapCurrenciesToCountries(data?.countries);
 
-    return mergeCurrenciesWithExchangeRates(fx, currenciesOfCountries).sort(
-      (rateA, rateB) => rateA.country.name.localeCompare(rateB.country.name)
+    return mergeCurrenciesWithExchangeRates(
+      fx ?? [],
+      currenciesOfCountries
+    ).sort((rateA, rateB) =>
+      rateA.country.name.localeCompare(rateB.country.name)
     );
   }, [data]);
 

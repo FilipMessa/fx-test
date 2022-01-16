@@ -15,7 +15,7 @@ type ExchangeRate = {
   middle: number;
   sell: number;
   indicator: number;
-  lastModified: Date;
+  lastModified: string;
 };
 
 type BanknoteRate = {
@@ -23,7 +23,7 @@ type BanknoteRate = {
   middle: number;
   sell: number;
   indicator: number;
-  lastModified: Date;
+  lastModified: string;
 };
 
 export type Fx = {
@@ -38,8 +38,8 @@ export type Fx = {
 
 export type ExchangeRates = {
   institute: number;
-  lastUpdated: Date;
-  comparisonDate: Date;
+  lastUpdated: string;
+  comparisonDate: string;
   baseCurrency: string;
   fx: Fx[];
 };
@@ -50,6 +50,6 @@ export type CurrencyExchangeRate = {
     countryCode: string;
   };
   currency: string;
-  sell: number;
-  buy: number;
+  sell?: number;
+  buy?: number;
 };
