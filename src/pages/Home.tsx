@@ -22,20 +22,19 @@ const Home = () => {
         searchTerm={searchTerm}
         isDisabled={isLoading}
       />
-      <main>
-        {hasError ? (
-          <Result
-            status="error"
-            title="Sorry something went wrong. Please try again later."
-          />
-        ) : (
-          <ExchangeRateTable
-            baseCurrency={baseCurrency}
-            exchangeRates={exchangeRates}
-            isLoading={isLoading}
-          />
-        )}
-      </main>
+
+      {hasError ? (
+        <Result
+          status="error"
+          title="Sorry something went wrong. Please try again later."
+        />
+      ) : (
+        <ExchangeRateTable
+          baseCurrency={baseCurrency}
+          exchangeRates={exchangeRates}
+          isLoading={isLoading}
+        />
+      )}
     </Space>
   );
 };
