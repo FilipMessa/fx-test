@@ -1,5 +1,5 @@
 import { ReactNode, memo } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Layout, Typography, Image, Row, Col } from "antd";
 
 import { NAV_LINKS } from "../consts";
@@ -12,6 +12,9 @@ type Props = {
 };
 
 export const PageLayout = ({ children }: Props) => {
+  const { pathname } = useLocation();
+  const isAboutPage = pathname.split("/")[1] === NAV_LINKS.about;
+
   return (
     <Layout>
       <Header data-cy="page-header">
@@ -19,10 +22,17 @@ export const PageLayout = ({ children }: Props) => {
           <Col xs={0} sm={1}>
             <GeorgeLogo />
           </Col>
-          <Col flex={11}>
+          <Col flex={10}>
             <Typography.Title style={{ margin: "0 8px", color: "#fff" }}>
               George FE test
             </Typography.Title>
+          </Col>
+          <Col>
+            <NavLink to={isAboutPage ? NAV_LINKS.home : NAV_LINKS.about}>
+              <Typography.Link>
+                {isAboutPage ? "Home" : "About"}
+              </Typography.Link>
+            </NavLink>
           </Col>
         </Row>
       </Header>

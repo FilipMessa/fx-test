@@ -12,7 +12,7 @@ describe("HomePage", () => {
     cy.get('[data-cy="page-header"]').as("pageHeader");
 
     cy.get("@pageHeader").should("be.visible");
-    cy.get("@pageHeader").should("to.have.text", "George FE test");
+    cy.get("@pageHeader").should("contain.text", "George FE test");
 
     cy.get(".ant-spin-dot").should("be.visible");
 
