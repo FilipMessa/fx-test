@@ -21,7 +21,7 @@ const About = () => (
           </li>
           <li>
             <Link target="_blank" href="https://ant.design/">
-              And design
+              Ant design
             </Link>
           </li>
           <li>
